@@ -1,13 +1,13 @@
-package com.crud.dao;
+package com.example.project4.DAO;
+
+import com.example.project4.VO.BoardVO;
+import com.example.project4.util.JDBCUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
-
-import com.crud.bean.BoardVO;
-import com.crud.common.JDBCUtil;
 
 public class BoardDAO {
 	
