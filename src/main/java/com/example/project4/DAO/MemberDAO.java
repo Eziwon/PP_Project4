@@ -6,6 +6,7 @@ import com.example.project4.util.JDBCUtil;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -117,4 +118,22 @@ public class MemberDAO {
 		} 
 		return list;
 	}
+
+	public String getPhotoFilename(int sid) {
+		String filename = null;
+		try {
+			conn = JDBCUtil.getConnection();
+			stmt = conn.prepareStatement(MEMBER_GET);
+			stmt.setInt(1, sid);
+			rs = stmt.executeQuery();
+			if (rs.next()) {
+				filename = rs.getString("photo");
+			}
+			rs.close();
+		} catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+		System.out.println("===> JDBC로 getPhotoFilename() 기능 처리");
+		return filename;
+    }
 }
