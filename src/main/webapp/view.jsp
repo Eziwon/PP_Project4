@@ -12,7 +12,7 @@
     MemberVO u = memberDAO.getMember(Integer.parseInt(id));
     request.setAttribute("vo", u);
 %>
-<h1>회원 정보 보기</h1>
+<h1>Member Information</h1>
 <table id="edit">
     <tr>
         <td>User ID</td><td>${vo.getUserid()}</td>
@@ -30,7 +30,7 @@
         <td>Regist Date</td><td>${vo.getRegdate()}</td>
     </tr>
 </table>
-<button type="button" onclick="history.back()">뒤로 가기</button>
-<button type="button" onclick="location.href='editform.jsp?id=${vo.getSid()}'">수정하기</button>
+<button type="button" onclick="history.back()">back</button>
+<button type="button" onclick="location.href='editform.jsp?id=${vo.getSid()}'">edit</button>
 </body>
 </html>

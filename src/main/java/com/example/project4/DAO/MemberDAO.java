@@ -16,23 +16,23 @@ public class MemberDAO {
 	PreparedStatement stmt = null;
 	ResultSet rs = null;
 
-	private final String MEMBER_INSERT = "insert into MEMBER (userid, password, username, email, photo) values (?,sha1(?),?,?,?)";
-	private final String MEMBER_UPDATE = "update MEMBER set username=?, email=?, photo=? where sid=?";
-	private final String MEMBER_DELETE = "delete from MEMBER  where sid=?";
-	private final String MEMBER_GET = "select * from MEMBER  where sid=?";
-	private final String MEMBER_LIST = "select * from MEMBER order by regdate desc";
+	private final String M_INSERT = "insert into MEMBER (userid, password, username, email, detail) values (?,sha1(?),?,?,?)";
+	private final String M_UPDATE = "update MEMBER set username=?, email=?, detail=? where sid=?";
+	private final String M_DELETE = "delete from MEMBER where sid=?";
+	private final String M_SELECT = "select * from MEMBER where sid=?";
+	private final String M_LIST = "select * from MEMBER order by regdate desc";
 
 
 	public int insertMember(MemberVO vo) {
 		System.out.println("===> JDBC로 insertMember() 기능 처리");
 		try {
 			conn = JDBCUtil.getConnection();
-			stmt = conn.prepareStatement(MEMBER_INSERT);
+			stmt = conn.prepareStatement(M_INSERT);
 			stmt.setString(1, vo.getUserid());
 			stmt.setString(2, vo.getPassword());
 			stmt.setString(3, vo.getUsername());
 			stmt.setString(4, vo.getEmail());
-			stmt.setString(5, vo.getPhoto());
+			stmt.setString(5, vo.getDetail());
 			stmt.executeUpdate();
 			return 1;
 		} catch (Exception e) {
@@ -46,7 +46,7 @@ public class MemberDAO {
 		System.out.println("===> JDBC로 deleteMember() 기능 처리");
 		try {
 			conn = JDBCUtil.getConnection();
-			stmt = conn.prepareStatement(MEMBER_DELETE);
+			stmt = conn.prepareStatement(M_DELETE);
 			stmt.setInt(1, vo.getSid());
 			stmt.executeUpdate();
 		} catch (Exception e) {
@@ -57,13 +57,13 @@ public class MemberDAO {
 		System.out.println("===> JDBC로 updateMember() 기능 처리");
 		try {
 			conn = JDBCUtil.getConnection();
-			stmt = conn.prepareStatement(MEMBER_UPDATE);
+			stmt = conn.prepareStatement(M_UPDATE);
 			stmt.setString(1, vo.getUsername());
 			stmt.setString(2, vo.getEmail());
-			stmt.setString(3, vo.getPhoto());
+			stmt.setString(3, vo.getDetail());
 			stmt.setInt(4, vo.getSid());
 
-			System.out.println(vo.getUsername() + "-" + vo.getEmail() + "-" + vo.getPhoto() + "-" + vo.getSid());
+			System.out.println(vo.getUsername() + "-" + vo.getEmail() + "-" + vo.getDetail() + "-" + vo.getSid());
 			stmt.executeUpdate();
 			return 1;
 			
@@ -78,7 +78,7 @@ public class MemberDAO {
 		System.out.println("===> JDBC로 getMember() 기능 처리");
 		try {
 			conn = JDBCUtil.getConnection();
-			stmt = conn.prepareStatement(MEMBER_GET);
+			stmt = conn.prepareStatement(M_SELECT);
 			stmt.setInt(1, sid);
 			rs = stmt.executeQuery();
 			if(rs.next()) {
@@ -86,7 +86,7 @@ public class MemberDAO {
 				one.setUserid(rs.getString("userid"));
 				one.setUsername(rs.getString("username"));
 				one.setEmail(rs.getString("email"));
-				one.setPhoto(rs.getString("photo"));
+				one.setDetail(rs.getString("detail"));
 				one.setRegdate(rs.getDate("regdate"));
 			}
 			rs.close();
@@ -101,7 +101,7 @@ public class MemberDAO {
 		System.out.println("===> JDBC로 getMemberList() 기능 처리");
 		try {
 			conn = JDBCUtil.getConnection();
-			stmt = conn.prepareStatement(MEMBER_LIST);
+			stmt = conn.prepareStatement(M_LIST);
 			rs = stmt.executeQuery();
 			while(rs.next()) {
 				MemberVO one = new MemberVO();
@@ -109,6 +109,7 @@ public class MemberDAO {
 				one.setUserid(rs.getString("userid"));
 				one.setUsername(rs.getString("username"));
 				one.setEmail(rs.getString("email"));
+				one.setDetail(rs.getString("detail"));
 				one.setRegdate(rs.getDate("regdate"));
 				list.add(one);
 			}
@@ -118,22 +119,4 @@ public class MemberDAO {
 		} 
 		return list;
 	}
-
-	public String getPhotoFilename(int sid) {
-		String filename = null;
-		try {
-			conn = JDBCUtil.getConnection();
-			stmt = conn.prepareStatement(MEMBER_GET);
-			stmt.setInt(1, sid);
-			rs = stmt.executeQuery();
-			if (rs.next()) {
-				filename = rs.getString("photo");
-			}
-			rs.close();
-		} catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-		System.out.println("===> JDBC로 getPhotoFilename() 기능 처리");
-		return filename;
-    }
 }

@@ -8,7 +8,7 @@ public class MemberVO {
 	private String password;
 	private String username;
 	private String email;
-	private String photo;
+	private String detail;
 	private Date regdate;
 
 	public int getSid() { return sid; }
@@ -35,8 +35,8 @@ public class MemberVO {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getPhoto() { return photo; }
-	public void setPhoto(String photo) { this.photo = photo; }
+	public String getDetail() { return detail; }
+	public void setDetail(String detail) { this.detail = detail; }
 	public Date getRegdate() {
 		return regdate;
 	}

@@ -36,7 +36,7 @@
 </script>
 </head>
 <body>
-<h1>자유게시판</h1>
+<h1>Member List</h1>
 <%
 	MemberDAO memberDAO = new MemberDAO();
 	List<MemberVO> list = memberDAO.getMemberList();
@@ -45,25 +45,25 @@
 <table id="list" width="90%">
 <tr>
 	<th>Id</th>
-	<th>Title</th>
-	<th>Writer</th>
-	<th>Content</th>
+	<th>UserID</th>
+	<th>Username</th>
+	<th>Email</th>
 	<th>Regdate</th>
-	<th>Edit</th>
-	<th>Delete</th>
+	<th>View</th>
+	<th>Edit/Delete</th>
 </tr>
 <c:forEach items="${list}" var="u">
 	<tr>
-		<td>${u.getSeq()}</td>
-		<td>${u.getTitle()}</td>
-		<td>${u.getWriter()}</td>
-		<td>${u.getContent()}</td>
+		<td>${u.getSid()}</td>
+		<td>${u.getUserid()}</td>
+		<td>${u.getUsername()}</td>
+		<td>${u.getEmail()}</td>
 		<td>${u.getRegdate()}</td>
-		<td><a href="editform.jsp?id=${u.getSeq()}">Edit</a></td>
-		<td><a href="javascript:delete_ok('${u.getSeq()}')">Delete</a></td>
+		<td><a href="view.jsp?id=${u.getSid()}">View</a></td>
+		<td><a href="editform.jsp?id=${u.getSid()}">Edit</a> <a href="javascript:delete_ok('${u.getSid()}')">Delete</a></td>
 	</tr>
 </c:forEach>
 </table>
-<br/><a href="addpostform.jsp">Add New Post</a>
+<br/><a href="addpostform.jsp">Add New Member</a>
 </body>
 </html>

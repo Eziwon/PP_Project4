@@ -9,9 +9,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8dee19a1-7039-4441-bfc7-6b35f0ff39ec" name="Changes" comment="change MemberVO">
+    <list default="true" id="8dee19a1-7039-4441-bfc7-6b35f0ff39ec" name="Changes" comment="create view.jsp">
+      <change afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/upload/sample.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project4/DAO/MemberDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project4/DAO/MemberDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project4/FileUpload.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project4/VO/MemberVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project4/VO/MemberVO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project4/util/JDBCUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project4/util/JDBCUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/addpost.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/addpost.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/addpostform.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/addpostform.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/deletepost.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/deletepost.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/editform.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/editform.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/editpost.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/editpost.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/fileupload.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/posts.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/posts.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +33,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Class" />
         <option value="Jsp File" />
       </list>
     </option>
@@ -60,13 +73,27 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/webapp/" />
+      <recent name="$PROJECT_DIR$/src/main/webapp/upload" />
       <recent name="$PROJECT_DIR$/src/main/webapp" />
       <recent name="$PROJECT_DIR$/src/main/java/com/example/project4/util" />
       <recent name="$PROJECT_DIR$/src/main/java/com/example/project4/VO" />
-      <recent name="$PROJECT_DIR$/src/main/java/com/example/project4/DAO" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.82">
+    <configuration name="JDBCUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.project4.util.JDBCUtil" />
+      <module name="Project4" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.project4.util.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Tomcat 9.0.82" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.82" ALTERNATIVE_JRE_ENABLED="false">
       <deployment>
         <artifact name="Project4:war exploded">
@@ -105,6 +132,11 @@
         </option>
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.JDBCUtil" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -119,7 +151,7 @@
       <workItem from="1700329487289" duration="5000" />
       <workItem from="1700329535558" duration="292000" />
       <workItem from="1700329833973" duration="2251000" />
-      <workItem from="1700495324223" duration="5446000" />
+      <workItem from="1700495324223" duration="15579000" />
     </task>
     <task id="LOCAL-00001" summary="DAO, VO, Util 제작">
       <option name="closed" value="true" />
@@ -161,7 +193,47 @@
       <option name="project" value="LOCAL" />
       <updated>1700500427791</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="change MemberDAO">
+      <option name="closed" value="true" />
+      <created>1700501905430</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1700501905430</updated>
+    </task>
+    <task id="LOCAL-00007" summary="add getPhotoFilename in MemberDAO">
+      <option name="closed" value="true" />
+      <created>1700504966696</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1700504966696</updated>
+    </task>
+    <task id="LOCAL-00008" summary="파일 저장 기능 추가">
+      <option name="closed" value="true" />
+      <created>1700505421450</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1700505421450</updated>
+    </task>
+    <task id="LOCAL-00009" summary="create FileUpload.java">
+      <option name="closed" value="true" />
+      <created>1700507617274</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1700507617274</updated>
+    </task>
+    <task id="LOCAL-00010" summary="create view.jsp">
+      <option name="closed" value="true" />
+      <created>1700511833664</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1700511833664</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -189,6 +261,11 @@
     <MESSAGE value="create fileupload.jsp" />
     <MESSAGE value="change Board to Member" />
     <MESSAGE value="change MemberVO" />
-    <option name="LAST_COMMIT_MESSAGE" value="change MemberVO" />
+    <MESSAGE value="change MemberDAO" />
+    <MESSAGE value="add getPhotoFilename in MemberDAO" />
+    <MESSAGE value="파일 저장 기능 추가" />
+    <MESSAGE value="create FileUpload.java" />
+    <MESSAGE value="create view.jsp" />
+    <option name="LAST_COMMIT_MESSAGE" value="create view.jsp" />
   </component>
 </project>
