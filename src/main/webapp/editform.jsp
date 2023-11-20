@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- <%@page import="com.example.project4.DAO.BoardDAO, com.example.project4.VO.BoardVO"%>
+ <%@page import="com.example.project4.DAO.MemberDAO, com.example.project4.VO.MemberVO"%>
+<%@ page import="com.example.project4.DAO.MemberDAO" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,9 +11,9 @@
 <body>
 
 <%
-	BoardDAO boardDAO = new BoardDAO();
+	MemberDAO memberDAO = new MemberDAO();
 	String id=request.getParameter("id");	
-	BoardVO u=boardDAO.getBoard(Integer.parseInt(id));
+	MemberVO u= memberDAO.getMember(Integer.parseInt(id));
 %>
 
 <h1>Edit Form</h1>

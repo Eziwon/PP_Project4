@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@page import="com.example.project4.DAO.BoardDAO, com.example.project4.VO.BoardVO,java.util.*"%>
+<%@page import="com.example.project4.DAO.MemberDAO, com.example.project4.VO.MemberVO,java.util.*"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -38,8 +38,8 @@
 <body>
 <h1>자유게시판</h1>
 <%
-	BoardDAO boardDAO = new BoardDAO();
-	List<BoardVO> list = boardDAO.getBoardList();
+	MemberDAO memberDAO = new MemberDAO();
+	List<MemberVO> list = memberDAO.getMemberList();
 	request.setAttribute("list",list);
 %>
 <table id="list" width="90%">

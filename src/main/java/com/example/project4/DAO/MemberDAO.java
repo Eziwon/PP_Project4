@@ -1,6 +1,6 @@
 package com.example.project4.DAO;
 
-import com.example.project4.VO.BoardVO;
+import com.example.project4.VO.MemberVO;
 import com.example.project4.util.JDBCUtil;
 
 import java.sql.Connection;
@@ -9,23 +9,23 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BoardDAO {
+public class MemberDAO {
 	
 	Connection conn = null;
 	PreparedStatement stmt = null;
 	ResultSet rs = null;
 
-	private final String BOARD_INSERT = "insert into BOARD (title, writer, content) values (?,?,?)";
-	private final String BOARD_UPDATE = "update BOARD set title=?, writer=?, content=? where seq=?";
-	private final String BOARD_DELETE = "delete from BOARD  where seq=?";
-	private final String BOARD_GET = "select * from BOARD  where seq=?";
-	private final String BOARD_LIST = "select * from BOARD order by seq desc";
+	private final String MEMBER_INSERT = "insert into MEMBER (title, writer, content) values (?,?,?)";
+	private final String MEMBER_UPDATE = "update MEMBER set title=?, writer=?, content=? where seq=?";
+	private final String MEMBER_DELETE = "delete from MEMBER  where seq=?";
+	private final String MEMBER_GET = "select * from MEMBER  where seq=?";
+	private final String MEMBER_LIST = "select * from MEMBER order by seq desc";
 
-	public int insertBoard(BoardVO vo) {
+	public int insertMember(MemberVO vo) {
 		System.out.println("===> JDBC로 insertBoard() 기능 처리");
 		try {
 			conn = JDBCUtil.getConnection();
-			stmt = conn.prepareStatement(BOARD_INSERT);
+			stmt = conn.prepareStatement(MEMBER_INSERT);
 			stmt.setString(1, vo.getTitle());
 			stmt.setString(2, vo.getWriter());
 			stmt.setString(3, vo.getContent());
@@ -38,22 +38,22 @@ public class BoardDAO {
 	}
 
 	// 글 삭제
-	public void deleteBoard(BoardVO vo) {
+	public void deleteMember(MemberVO vo) {
 		System.out.println("===> JDBC로 deleteBoard() 기능 처리");
 		try {
 			conn = JDBCUtil.getConnection();
-			stmt = conn.prepareStatement(BOARD_DELETE);
+			stmt = conn.prepareStatement(MEMBER_DELETE);
 			stmt.setInt(1, vo.getSeq());
 			stmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-	public int updateBoard(BoardVO vo) {
+	public int updateMember(MemberVO vo) {
 		System.out.println("===> JDBC로 updateBoard() 기능 처리");
 		try {
 			conn = JDBCUtil.getConnection();
-			stmt = conn.prepareStatement(BOARD_UPDATE);
+			stmt = conn.prepareStatement(MEMBER_UPDATE);
 			stmt.setString(1, vo.getTitle());
 			stmt.setString(2, vo.getWriter());
 			stmt.setString(3, vo.getContent());
@@ -70,12 +70,12 @@ public class BoardDAO {
 		return 0;
 	}	
 	
-	public BoardVO getBoard(int seq) {
-		BoardVO one = new BoardVO();
+	public MemberVO getMember(int seq) {
+		MemberVO one = new MemberVO();
 		System.out.println("===> JDBC로 getBoard() 기능 처리");
 		try {
 			conn = JDBCUtil.getConnection();
-			stmt = conn.prepareStatement(BOARD_GET);
+			stmt = conn.prepareStatement(MEMBER_GET);
 			stmt.setInt(1, seq);
 			rs = stmt.executeQuery();
 			if(rs.next()) {
@@ -92,15 +92,15 @@ public class BoardDAO {
 		return one;
 	}
 	
-	public List<BoardVO> getBoardList(){
-		List<BoardVO> list = new ArrayList<BoardVO>();
+	public List<MemberVO> getMemberList(){
+		List<MemberVO> list = new ArrayList<MemberVO>();
 		System.out.println("===> JDBC로 getBoardList() 기능 처리");
 		try {
 			conn = JDBCUtil.getConnection();
-			stmt = conn.prepareStatement(BOARD_LIST);
+			stmt = conn.prepareStatement(MEMBER_LIST);
 			rs = stmt.executeQuery();
 			while(rs.next()) {
-				BoardVO one = new BoardVO();
+				MemberVO one = new MemberVO();
 				one.setSeq(rs.getInt("seq"));
 				one.setTitle(rs.getString("title"));
 				one.setWriter(rs.getString("writer"));
