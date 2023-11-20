@@ -15,11 +15,12 @@ public class MemberDAO {
 	PreparedStatement stmt = null;
 	ResultSet rs = null;
 
-	private final String MEMBER_INSERT = "insert into MEMBER (userid, username, content) values (?,?,?)";
-	private final String MEMBER_UPDATE = "update MEMBER set userid=?, username=?, content=? where sid=?";
+	private final String MEMBER_INSERT = "insert into MEMBER (userid, password, username, email, photo) values (?,sha1(?),?,?,?)";
+	private final String MEMBER_UPDATE = "update MEMBER set username=?, email=?, photo=? where sid=?";
 	private final String MEMBER_DELETE = "delete from MEMBER  where sid=?";
 	private final String MEMBER_GET = "select * from MEMBER  where sid=?";
-	private final String MEMBER_LIST = "select * from MEMBER order by sid desc";
+	private final String MEMBER_LIST = "select * from MEMBER order by regdate desc";
+
 
 	public int insertMember(MemberVO vo) {
 		System.out.println("===> JDBC로 insertMember() 기능 처리");
@@ -27,8 +28,10 @@ public class MemberDAO {
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(MEMBER_INSERT);
 			stmt.setString(1, vo.getUserid());
-			stmt.setString(2, vo.getUsername());
-			stmt.setString(3, vo.getEmail());
+			stmt.setString(2, vo.getPassword());
+			stmt.setString(3, vo.getUsername());
+			stmt.setString(4, vo.getEmail());
+			stmt.setString(5, vo.getPhoto());
 			stmt.executeUpdate();
 			return 1;
 		} catch (Exception e) {
@@ -54,13 +57,12 @@ public class MemberDAO {
 		try {
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(MEMBER_UPDATE);
-			stmt.setString(1, vo.getUserid());
-			stmt.setString(2, vo.getUsername());
-			stmt.setString(3, vo.getEmail());
+			stmt.setString(1, vo.getUsername());
+			stmt.setString(2, vo.getEmail());
+			stmt.setString(3, vo.getPhoto());
 			stmt.setInt(4, vo.getSid());
-			
-			
-			System.out.println(vo.getUserid() + "-" + vo.getUsername() + "-" + vo.getEmail() + "-" + vo.getSid());
+
+			System.out.println(vo.getUsername() + "-" + vo.getEmail() + "-" + vo.getPhoto() + "-" + vo.getSid());
 			stmt.executeUpdate();
 			return 1;
 			
@@ -83,6 +85,8 @@ public class MemberDAO {
 				one.setUserid(rs.getString("userid"));
 				one.setUsername(rs.getString("username"));
 				one.setEmail(rs.getString("email"));
+				one.setPhoto(rs.getString("photo"));
+				one.setRegdate(rs.getDate("regdate"));
 			}
 			rs.close();
 		} catch (Exception e) {

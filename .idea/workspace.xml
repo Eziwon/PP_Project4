@@ -9,10 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8dee19a1-7039-4441-bfc7-6b35f0ff39ec" name="Changes" comment="change Board to Member">
+    <list default="true" id="8dee19a1-7039-4441-bfc7-6b35f0ff39ec" name="Changes" comment="change MemberVO">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project4/DAO/MemberDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project4/DAO/MemberDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/project4/VO/MemberVO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/project4/VO/MemberVO.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,7 +119,7 @@
       <workItem from="1700329487289" duration="5000" />
       <workItem from="1700329535558" duration="292000" />
       <workItem from="1700329833973" duration="2251000" />
-      <workItem from="1700495324223" duration="3913000" />
+      <workItem from="1700495324223" duration="5446000" />
     </task>
     <task id="LOCAL-00001" summary="DAO, VO, Util 제작">
       <option name="closed" value="true" />
@@ -154,7 +153,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700496726798</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="change MemberVO">
+      <option name="closed" value="true" />
+      <created>1700500427791</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1700500427791</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -181,6 +188,7 @@
     <MESSAGE value="DAO, VO, Util 제작" />
     <MESSAGE value="create fileupload.jsp" />
     <MESSAGE value="change Board to Member" />
-    <option name="LAST_COMMIT_MESSAGE" value="change Board to Member" />
+    <MESSAGE value="change MemberVO" />
+    <option name="LAST_COMMIT_MESSAGE" value="change MemberVO" />
   </component>
 </project>
