@@ -15,20 +15,20 @@ public class MemberDAO {
 	PreparedStatement stmt = null;
 	ResultSet rs = null;
 
-	private final String MEMBER_INSERT = "insert into MEMBER (title, writer, content) values (?,?,?)";
-	private final String MEMBER_UPDATE = "update MEMBER set title=?, writer=?, content=? where seq=?";
-	private final String MEMBER_DELETE = "delete from MEMBER  where seq=?";
-	private final String MEMBER_GET = "select * from MEMBER  where seq=?";
-	private final String MEMBER_LIST = "select * from MEMBER order by seq desc";
+	private final String MEMBER_INSERT = "insert into MEMBER (userid, username, content) values (?,?,?)";
+	private final String MEMBER_UPDATE = "update MEMBER set userid=?, username=?, content=? where sid=?";
+	private final String MEMBER_DELETE = "delete from MEMBER  where sid=?";
+	private final String MEMBER_GET = "select * from MEMBER  where sid=?";
+	private final String MEMBER_LIST = "select * from MEMBER order by sid desc";
 
 	public int insertMember(MemberVO vo) {
 		System.out.println("===> JDBC로 insertMember() 기능 처리");
 		try {
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(MEMBER_INSERT);
-			stmt.setString(1, vo.getTitle());
-			stmt.setString(2, vo.getWriter());
-			stmt.setString(3, vo.getContent());
+			stmt.setString(1, vo.getUserid());
+			stmt.setString(2, vo.getUsername());
+			stmt.setString(3, vo.getEmail());
 			stmt.executeUpdate();
 			return 1;
 		} catch (Exception e) {
@@ -43,7 +43,7 @@ public class MemberDAO {
 		try {
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(MEMBER_DELETE);
-			stmt.setInt(1, vo.getSeq());
+			stmt.setInt(1, vo.getSid());
 			stmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -54,13 +54,13 @@ public class MemberDAO {
 		try {
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(MEMBER_UPDATE);
-			stmt.setString(1, vo.getTitle());
-			stmt.setString(2, vo.getWriter());
-			stmt.setString(3, vo.getContent());
-			stmt.setInt(4, vo.getSeq());
+			stmt.setString(1, vo.getUserid());
+			stmt.setString(2, vo.getUsername());
+			stmt.setString(3, vo.getEmail());
+			stmt.setInt(4, vo.getSid());
 			
 			
-			System.out.println(vo.getTitle() + "-" + vo.getWriter() + "-" + vo.getContent() + "-" + vo.getSeq());
+			System.out.println(vo.getUserid() + "-" + vo.getUsername() + "-" + vo.getEmail() + "-" + vo.getSid());
 			stmt.executeUpdate();
 			return 1;
 			
@@ -70,20 +70,19 @@ public class MemberDAO {
 		return 0;
 	}	
 	
-	public MemberVO getMember(int seq) {
+	public MemberVO getMember(int sid) {
 		MemberVO one = new MemberVO();
 		System.out.println("===> JDBC로 getMember() 기능 처리");
 		try {
 			conn = JDBCUtil.getConnection();
 			stmt = conn.prepareStatement(MEMBER_GET);
-			stmt.setInt(1, seq);
+			stmt.setInt(1, sid);
 			rs = stmt.executeQuery();
 			if(rs.next()) {
-				one.setSeq(rs.getInt("seq"));
-				one.setTitle(rs.getString("title"));
-				one.setWriter(rs.getString("writer"));
-				one.setContent(rs.getString("content"));
-				one.setCnt(rs.getInt("cnt"));
+				one.setSid(rs.getInt("sid"));
+				one.setUserid(rs.getString("userid"));
+				one.setUsername(rs.getString("username"));
+				one.setEmail(rs.getString("email"));
 			}
 			rs.close();
 		} catch (Exception e) {
@@ -101,12 +100,11 @@ public class MemberDAO {
 			rs = stmt.executeQuery();
 			while(rs.next()) {
 				MemberVO one = new MemberVO();
-				one.setSeq(rs.getInt("seq"));
-				one.setTitle(rs.getString("title"));
-				one.setWriter(rs.getString("writer"));
-				one.setContent(rs.getString("content"));
+				one.setSid(rs.getInt("sid"));
+				one.setUserid(rs.getString("userid"));
+				one.setUsername(rs.getString("username"));
+				one.setEmail(rs.getString("email"));
 				one.setRegdate(rs.getDate("regdate"));
-				one.setCnt(rs.getInt("cnt"));
 				list.add(one);
 			}
 			rs.close();
