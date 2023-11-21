@@ -17,7 +17,7 @@ public class MemberDAO {
 	ResultSet rs = null;
 
 	private final String M_INSERT = "insert into MEMBER (userid, password, username, email, detail) values (?,sha1(?),?,?,?)";
-	private final String M_UPDATE = "update MEMBER set username=?, email=?, detail=? where sid=?";
+	private final String M_UPDATE = "update MEMBER set userid=?, username=?, email=?, detail=? where sid=?";
 	private final String M_DELETE = "delete from MEMBER where sid=?";
 	private final String M_SELECT = "select * from MEMBER where sid=?";
 	private final String M_LIST = "select * from MEMBER order by regdate desc";
